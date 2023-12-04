@@ -1,9 +1,8 @@
 import requests
-import json
 
 
 def get_auth_header(token):
-    return {"Authorization" : "Bearer " + token}
+    return {"Authorization": "Bearer " + token}
 
 
 def get_spotify_id(token):

@@ -1,9 +1,9 @@
 import urllib.parse
 import requests
-from flask import Flask, render_template, request, redirect, jsonify, session
+from flask import Flask, request, redirect, jsonify, session
 from utils.credentials import CLIENT_SECRET, CLIENT_ID
 from api.utils.spotify_api import get_artists, get_spotify_id
-import os 
+import os
 
 random_key = os.urandom(12)
 
@@ -15,6 +15,7 @@ API_BASE_URL = 'https://api.spotify.com/v1/'
 
 app = Flask(__name__)
 app.secret_key = random_key
+
 
 @app.route("/")
 def index():
@@ -42,15 +43,15 @@ def login():
 def callback():
     if 'error' in request.args:
         return jsonify({"error": request.args['error']})
-    
+
     if 'code' in request.args:
         # get access token
         req_body = {
             'code': request.args['code'],
             'grant_type': 'authorization_code',
-            'redirect_uri': REDIRECT_URI,   
+            'redirect_uri': REDIRECT_URI,
             'client_id': CLIENT_ID,
-            'client_secret': CLIENT_SECRET     
+            'client_secret': CLIENT_SECRET
         }
 
         response = requests.post(TOKEN_URL, data=req_body)
@@ -59,7 +60,7 @@ def callback():
         session['access_token'] = token_info['access_token']
 
         return redirect('/homepage')
-    
+
 
 @app.route('/homepage')
 def homepage():
@@ -69,7 +70,7 @@ def homepage():
     get_spotify_id(session['access_token'])
     results = get_artists(session['access_token'])
     return jsonify(results)
-    
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
