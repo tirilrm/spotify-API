@@ -14,8 +14,7 @@ def login():
     username = request.form.get('username')
     location = request.form.get('location')
 
-    # Here, you can use the username and location as needed
-    # For example, you can store them in the session
+    # Storing username and location in the session
     session['spotify_username'] = username
     session['user_location'] = location
 
@@ -25,6 +24,4 @@ def login():
 @app.route('/events')
 def events():
     # Fetch music events based on Spotify username and location
-    # You can use the session data (username and location) to customize the events
-    # For example, fetch top artists based on the Spotify username and search for events in the specified location
     return render_template('events.html')
