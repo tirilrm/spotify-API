@@ -2,14 +2,18 @@ from flask import Flask, render_template, request
 import requests
 import csv
 
+
 app = Flask(__name__)
+
 
 BASE_URL = 'https://app.ticketmaster.com/discovery/v2/'
 TICKETMASTER_APIKEY = 'GGwzseyH2xqqNYGsj9n3TboGGTOLwUBE'
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/search/events', methods=['POST'])
 def search_events_route():
@@ -17,11 +21,13 @@ def search_events_route():
     event_results, event_data = search_events(keyword)
     return render_template('results.html', events=event_results, data=event_data)
 
+
 @app.route('/search/attractions', methods=['POST'])
 def search_attractions_route():
     keyword = request.form['attraction_keyword']
     attraction_results = search_attractions(keyword)
     return render_template('attractions_results.html', attractions=attraction_results)
+
 
 @app.route('/search/classifications', methods=['POST'])
 def search_classifications_route():
@@ -29,11 +35,13 @@ def search_classifications_route():
     classification_results = search_classifications(keyword)
     return render_template('classifications_results.html', classifications=classification_results)
 
+
 @app.route('/search/venues', methods=['POST'])
 def search_venues_route():
     keyword = request.form['venue_keyword']
     venue_results = search_venues(keyword)
     return render_template('results.html', venues=venue_results)
+
 
 def search_events(keyword):
     query = f'events?apikey={TICKETMASTER_APIKEY}&keyword={keyword}'
@@ -127,6 +135,7 @@ def search_events(keyword):
     else:
         return None
 
+
 def search_attractions(keyword):
     query = f'attractions?apikey={TICKETMASTER_APIKEY}&keyword={keyword}'
     response = requests.get(BASE_URL + query).json()
@@ -135,6 +144,7 @@ def search_attractions(keyword):
         return response['_embedded']['attractions']
     else:
         return None
+
 
 def search_classifications(keyword):
     query = f'classifications?apikey={TICKETMASTER_APIKEY}&keyword={keyword}'
@@ -145,6 +155,7 @@ def search_classifications(keyword):
     else:
         return None
 
+
 def search_venues(keyword):
     query = f'venues?apikey={TICKETMASTER_APIKEY}&keyword={keyword}'
     response = requests.get(BASE_URL + query).json()
@@ -153,6 +164,7 @@ def search_venues(keyword):
         return response['_embedded']['venues']
     else:
         return None
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
