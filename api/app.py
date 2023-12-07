@@ -9,20 +9,29 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    # Retrieve the Spotify username and location from the form submission
-    username = request.form.get('username')
-    location = request.form.get('location')
+    # add spotify API details 
 
-    # Storing username and location in the session
-    session['spotify_username'] = username
-    session['user_location'] = location
+    # Redirect to the spotify log in page
+    return redirect(auth_url)
 
     # Redirect user to the events page
     return redirect('/events')
 
-@app.route('/events')
-def events():
-    return render_template('events.html')
+@app.route('/callback')
+def callback():
+    # add code from spotify_api branch
+
+@app.route('/homepage')
+def homepage():
+    if 'access_token' not in session:
+        return redirect('/login')
+    # retrieve spotify user information
+    # (add code from spotify_api branch)
+
+    #add ticketmaster API for event information
+
+return render_template('events.html', top_artists=top_artists, events_data=events_data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
