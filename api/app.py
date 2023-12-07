@@ -3,11 +3,11 @@ import requests
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
 
-@app.route(/"login", methods=["POST"])
+@app.route('/login', methods=['POST'])
 def login():
     # Retrieve the Spotify username and location from the form submission
     username = request.form.get('username')
