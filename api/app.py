@@ -12,7 +12,8 @@ def login():
     # Retrieve the Spotify username and location from the form submission
     username = request.form.get('username')
     location = request.form.get('location')
-    
+
+    # Storing username and location in the session
     session['spotify_username'] = username
     session['user_location'] = location
 
