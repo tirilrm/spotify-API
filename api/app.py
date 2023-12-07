@@ -1,14 +1,13 @@
 from flask import Flask, render_template, request, redirect, session, jsonify
-from datetime import datetime
 import requests
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
 
-@app.route(/"login", methods=["POST"])
+@app.route('/login', methods=['POST'])
 def login():
     # Retrieve the Spotify username and location from the form submission
     username = request.form.get('username')
@@ -23,5 +22,7 @@ def login():
 
 @app.route('/events')
 def events():
-    # Fetch music events based on Spotify username and location
     return render_template('events.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)

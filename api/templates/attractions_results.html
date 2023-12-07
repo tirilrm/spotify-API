@@ -1,0 +1,25 @@
+<!-- attractions_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attraction Search Results</title>
+</head>
+<body>
+    <h2>Attraction Search Results</h2>
+    {% if attractions %}
+        <ul>
+            {% for attraction in attractions %}
+                <li>
+                    <strong>{{ attraction.name }}</strong><br>
+                    ID: {{ attraction.id if attraction.id else 'NULL' }}<br>
+                    <a href="{{ attraction.url }}" target="_blank">Attraction Details</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No attractions found.</p>
+    {% endif %}
+</body>
+</html>

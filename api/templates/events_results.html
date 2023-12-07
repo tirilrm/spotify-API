@@ -1,0 +1,25 @@
+<!-- events_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Search Results</title>
+</head>
+<body>
+    <h2>Event Search Results</h2>
+    {% if events %}
+        <ul>
+            {% for event in events %}
+                <li>
+                    <strong>{{ event.name }}</strong><br>
+                    ID: {{ event.id if event.id else 'NULL' }}<br>
+                    <a href="{{ event.url }}" target="_blank">Event Details</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No events found.</p>
+    {% endif %}
+</body>
+</html>
