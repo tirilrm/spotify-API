@@ -63,7 +63,7 @@ def search_events(keyword):
                 name = event.get('name', '')
                 event_id = event.get('id', '')
                 locale = event.get('locale', '')
-                
+
                 # Extract genre, sub_genre, and segment from all classifications
                 genres = []
                 sub_genres = []
@@ -89,8 +89,6 @@ def search_events(keyword):
                 segment = ', '.join(segments)
                 genre = ', '.join(genres)
                 sub_genre = ', '.join(sub_genres)
-
-
                 venue_name = ''
                 if '_embedded' in event and 'venues' in event['_embedded'] and event['_embedded']['venues']:
                     venue_name = event['_embedded']['venues'][0]['name'] if 'name' in event['_embedded']['venues'][0] else ''
