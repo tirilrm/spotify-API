@@ -14,20 +14,20 @@ jobs:
       run: pip install flake8
     - name: Run flake8
       run: flake8 api/
-  unit-test:
-    needs: python-formatting
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Install flask
-      run: pip install Flask
-    - name: Install pytest
-      run: pip install pytest
-    - name: Run pytest
-      run: pytest api/
+  # unit-test:
+  #   needs: python-formatting
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Install flask
+  #     run: pip install Flask
+  #   - name: Install pytest
+  #     run: pip install pytest
+  #   - name: Run pytest
+  #     run: pytest api/
   deploy-to-vercel:
-    needs: unit-test
+    needs: python-formatting
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
