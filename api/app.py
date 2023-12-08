@@ -17,9 +17,9 @@ app = Flask(__name__)
 app.secret_key = random_key
 
 
-@app.route("/")
+@app.route('/')
 def index():
-    return "Welcome to my Spotify App <a href='/login'> Logic with Spotify</a>"
+    return render_template('index.html')
 
 
 @app.route("/login")
@@ -70,7 +70,8 @@ def homepage():
     get_spotify_id(session['access_token'])
     results = get_artists(session['access_token'])
     return jsonify(results)
+    return render_template('events.html', top_artists=top_artists, events_data=events_data)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(debug=True)

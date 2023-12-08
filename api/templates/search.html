@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticketmaster Search</title>
+</head>
+<body>
+    <h1>Ticketmaster Search</h1>
+
+    <h2>Search Events</h2>
+    <form action="/search/events" method="post">
+        <label for="event_keyword">Event Keyword:</label>
+        <input type="text" id="event_keyword" name="event_keyword" required>
+        <button type="submit">Search Events</button>
+    </form>
+
+    <h2>Search Attractions</h2>
+    <form action="/search/attractions" method="post">
+        <label for="attraction_keyword">Attraction Keyword:</label>
+        <input type="text" id="attraction_keyword" name="attraction_keyword" required>
+        <button type="submit">Search Attractions</button>
+    </form>
+
+    <h2>Search Classifications</h2>
+    <form action="/search/classifications" method="post">
+        <label for="classification_keyword">Classification Keyword:</label>
+        <input type="text" id="classification_keyword" name="classification_keyword" required>
+        <button type="submit">Search Classifications</button>
+    </form>
+
+    <h2>Search Venues</h2>
+    <form action="/search/venues" method="post">
+        <label for="venue_keyword">Venue Keyword:</label>
+        <input type="text" id="venue_keyword" name="venue_keyword" required>
+        <button type="submit">Search Venues</button>
+    </form>
+</body>
+</html>
