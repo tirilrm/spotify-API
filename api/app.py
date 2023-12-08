@@ -9,7 +9,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/login')
 def login():
     # add spotify API details 
 
