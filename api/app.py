@@ -1,10 +1,13 @@
 import urllib.parse
 import requests
 from flask import Flask, request, redirect, jsonify, session, render_template
-from api.utils.credentials import CLIENT_SECRET, CLIENT_ID
+#from api.utils.credentials import CLIENT_SECRET, CLIENT_ID
 from api.utils.spotify_api import get_top_artists_and_genres, get_spotify_id
 from api.utils.ticketmaster_api import get_events_based_on_genre
+
 import os
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+CLIENT_ID = os.getenv('CLIENT_ID')
 
 random_key = os.urandom(12)
 
