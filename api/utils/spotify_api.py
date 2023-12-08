@@ -13,14 +13,20 @@ def get_spotify_id(token):
     return response
 
 
-def get_artists(token):
+def get_top_artists_and_genres(token):
     url = 'https://api.spotify.com/v1/me/top/artists'
     headers = get_auth_header(token)
 
     response = requests.get(url, headers=headers).json()['items']
 
-    artists = []
-    for i in range(len(response)):
-        artists.append({key: response[i][key] for key in ['name', 'genres']})
+    top_artists = [artist['name'] for artist in response]
+    
+    top_genres = []
+    genre_list = [genre['genres'] for genre in response]
+    for genre_l in genre_list:
+        for genre in genre_l:
+            top_genres.append(genre)
+    top_genres = list(set(top_genres)) # remove duplicates
 
-    return artists
+
+    return top_artists, top_genres

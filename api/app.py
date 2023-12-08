@@ -1,8 +1,9 @@
 import urllib.parse
 import requests
-from flask import Flask, request, redirect, jsonify, session
-from utils.credentials import CLIENT_SECRET, CLIENT_ID
-from api.utils.spotify_api import get_artists, get_spotify_id
+from flask import Flask, request, redirect, jsonify, session, render_template
+from api.utils.credentials import CLIENT_SECRET, CLIENT_ID
+from api.utils.spotify_api import get_top_artists_and_genres, get_spotify_id
+from api.utils.ticketmaster_api import get_events_based_on_genre
 import os
 
 random_key = os.urandom(12)
@@ -53,7 +54,6 @@ def callback():
             'client_id': CLIENT_ID,
             'client_secret': CLIENT_SECRET
         }
-
         response = requests.post(TOKEN_URL, data=req_body)
         token_info = response.json()
 
@@ -66,11 +66,20 @@ def callback():
 def homepage():
     if 'access_token' not in session:
         return redirect('/login')
-
+    
+    # Request spotify top arists
     get_spotify_id(session['access_token'])
-    results = get_artists(session['access_token'])
-    return jsonify(results)
-    return render_template('events.html', top_artists=top_artists, events_data=events_data)
+    top_artists, top_genres = get_top_artists_and_genres(session['access_token'])
+    city = 'london'
+
+    # Get events based on genres
+    events = get_events_based_on_genre(top_genres, city)
+
+    # return jsonify(results)
+    return render_template('events_temp.html', 
+                           top_artists=top_artists, 
+                           top_genres=top_genres,
+                           events=events)
 
 
 if __name__ == '__main__':
