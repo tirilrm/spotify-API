@@ -3,9 +3,11 @@ import requests
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -17,9 +19,11 @@ def login():
     # Redirect user to the events page
     return redirect('/events')
 
+
 @app.route('/callback')
 def callback():
     # add code from spotify_api branch
+
 
 @app.route('/homepage')
 def homepage():
