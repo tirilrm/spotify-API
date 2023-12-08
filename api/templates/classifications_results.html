@@ -1,0 +1,31 @@
+<!-- classifications_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Search Results</title>
+</head>
+<body>
+    <h2>Classification Search Results</h2>
+    {% if classifications %}
+        <ul>
+            {% for classification in classifications %}
+                <li>
+                    <strong>{{ classification.segment.name }}</strong><br>
+                    ID: {{ classification.segment.id if classification.segment.id else 'NULL' }}<br>
+                    {% if 'type' in classification %}
+                        Type: {{ classification.type.name if classification.type.name else 'NULL' }}<br>
+                    {% endif %}
+                    {% if 'subType' in classification %}
+                        SubType: {{ classification.subType.name if classification.subType.name else 'NULL' }}<br>
+                    {% endif %}
+                    Family: {{ classification.family if classification.family else 'NULL' }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No classifications found.</p>
+    {% endif %}
+</body>
+</html>

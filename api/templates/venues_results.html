@@ -1,0 +1,25 @@
+<!-- venues_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue Search Results</title>
+</head>
+<body>
+    <h2>Venue Search Results</h2>
+    {% if venues %}
+        <ul>
+            {% for venue in venues %}
+                <li>
+                    <strong>{{ venue.name }}</strong><br>
+                    ID: {{ venue.id if venue.id else 'NULL' }}<br>
+                    <a href="{{ venue.url }}" target="_blank">Venue Details</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No venues found.</p>
+    {% endif %}
+</body>
+</html>
