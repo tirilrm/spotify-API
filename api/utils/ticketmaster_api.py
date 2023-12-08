@@ -164,7 +164,7 @@ def search_venues(keyword):
         return None
 
 
-def get_events_based_on_genre(genres : list, city : str):
+def get_events_based_on_genre(genres: list, city: str):
     query = f'events?apikey={TICKETMASTER_APIKEY}&locale=*&city={city.lower()}&classificationName={(",").join(genres)}'
 
     response = requests.get(BASE_URL + query).json()['_embedded']['events']
@@ -172,6 +172,7 @@ def get_events_based_on_genre(genres : list, city : str):
     for i in range(len(response)):
         events_list.append({key: response[i][key] for key in ['name', 'id']})
     return events_list
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

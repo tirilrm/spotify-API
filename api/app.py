@@ -66,7 +66,7 @@ def callback():
 def homepage():
     if 'access_token' not in session:
         return redirect('/login')
-    
+
     # Request spotify top arists
     get_spotify_id(session['access_token'])
     top_artists, top_genres = get_top_artists_and_genres(session['access_token'])
@@ -76,8 +76,8 @@ def homepage():
     events = get_events_based_on_genre(top_genres, city)
 
     # return jsonify(results)
-    return render_template('events_temp.html', 
-                           top_artists=top_artists, 
+    return render_template('events_temp.html',
+                           top_artists=top_artists,
                            top_genres=top_genres,
                            events=events)
 

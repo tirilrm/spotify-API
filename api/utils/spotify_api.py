@@ -20,13 +20,12 @@ def get_top_artists_and_genres(token):
     response = requests.get(url, headers=headers).json()['items']
 
     top_artists = [artist['name'] for artist in response]
-    
+
     top_genres = []
     genre_list = [genre['genres'] for genre in response]
     for genre_l in genre_list:
         for genre in genre_l:
             top_genres.append(genre)
-    top_genres = list(set(top_genres)) # remove duplicates
-
+    top_genres = list(set(top_genres))  # remove duplicates
 
     return top_artists, top_genres
