@@ -1,6 +1,9 @@
 # from flask import Flask, render_template, request
-from api.utils.credentials import TICKETMASTER_APIKEY
+# from api.utils.credentials import TICKETMASTER_APIKEY
 import requests
+import os
+TICKETMASTER_APIKEY = os.getenv('TICKETMASTER_APIKEY')
+
 # import csv
 
 
