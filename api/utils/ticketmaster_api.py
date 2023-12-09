@@ -169,11 +169,13 @@ BASE_URL = 'https://app.ticketmaster.com/discovery/v2/'
 
 def get_events_based_on_genre(genres: list, city: str):
     query = f'events?apikey={TICKETMASTER_APIKEY}&locale=*&city={city.lower()}&classificationName={(",").join(genres)}'
-
-    response = requests.get(BASE_URL + query).json()['_embedded']['events']
     events_list = []
-    for i in range(len(response)):
-        events_list.append({key: response[i][key] for key in ['name', 'id']})
+    response = requests.get(BASE_URL + query).json()
+    if '_embedded' in response and 'events' in response['_embedded']:
+        events = response['_embedded']['events']
+        for i in range(len(events)):
+            events_list.append({key: events[i][key] for key in ['name', 'id']})
+
     return events_list
 
 

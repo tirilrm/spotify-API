@@ -34,7 +34,7 @@
             <p>No genres found.</p>
         {% endif %}
 
-
+    {% if events %}
     <table border="1">
         <tr>
             {%for key in events[0].keys()%}
@@ -49,6 +49,7 @@
         </tr>
         {% endfor %}
     </table>
+    {% endif %}
         
 </body>
 </html>
