@@ -16,7 +16,6 @@ def get_spotify_id(token):
 def get_top_artists_and_genres(token):
     url = 'https://api.spotify.com/v1/me/top/artists'
     headers = get_auth_header(token)
-
     response = requests.get(url, headers=headers).json()['items']
 
     top_artists = [artist['name'] for artist in response]

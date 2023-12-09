@@ -3,16 +3,15 @@ import requests
 from flask import Flask, request, redirect, jsonify, session, render_template
 from api.utils.spotify_api import get_top_artists_and_genres, get_spotify_id
 from api.utils.ticketmaster_api import get_events_based_on_genre
-
+from api.utils.db_query import execute_query
 import os
+
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 CLIENT_ID = os.getenv('CLIENT_ID')
 
 random_key = os.urandom(12)
 
-# REDIRECT_URI = os.environ.get('REDIRECT_URI', 'http://localhost:5000/callback')
-# REDIRECT_URI = 'http://localhost:5000/callback'
-REDIRECT_URI = 'https://spotify-api-bice.vercel.app/callback'
+REDIRECT_URI = os.environ.get('REDIRECT_URI', 'http://localhost:5000/callback')
 
 AUTH_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
@@ -60,7 +59,6 @@ def callback():
         }
         response = requests.post(TOKEN_URL, data=req_body)
         token_info = response.json()
-
         session['access_token'] = token_info['access_token']
 
         return redirect('/homepage')
@@ -72,19 +70,66 @@ def homepage():
         return redirect('/login')
 
     # Request spotify top arists
-    get_spotify_id(session['access_token'])
     top_artists, top_genres = get_top_artists_and_genres(session['access_token'])
-    city = 'london'
+
+    # return jsonify(results)
+    return render_template('artists_temp.html',
+                           top_artists=top_artists,
+                           top_genres=top_genres)
+
+
+@app.route('/events_results', methods=["POST"])
+def event_search():
+    if 'access_token' not in session:
+        return redirect('/login')
+    city = request.form.get('city')
+    top_genres = get_top_artists_and_genres(session['access_token'])[1]
 
     # Get events based on genres
     events = get_events_based_on_genre(top_genres, city)
 
-    # return jsonify(results)
-    return render_template('events_temp.html',
-                           top_artists=top_artists,
-                           top_genres=top_genres,
-                           events=events)
+    # Get liked events
+    spotify_id = get_spotify_id(session['access_token'])
+    query = f'''
+    SELECT event_id from liked_events WHERE spotify_id = '{spotify_id}'
+    '''
+    liked_events = execute_query(query)
+    liked_events = [e[0] for e in liked_events]
+
+    return render_template('events_results.html',
+                           events=events,
+                           liked_events=liked_events)
 
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+@app.route('/like', methods=["POST"])
+def like():
+    if 'access_token' not in session:
+        return redirect('/login')
+    spotify_id = get_spotify_id(session['access_token'])
+    event_id = request.form.get('eventID')
+    query = f'''
+    INSERT INTO liked_events (spotify_id, event_id)
+    VALUES ('{spotify_id}', '{event_id}')
+    ON CONFLICT DO NOTHING
+    '''
+    execute_query(query, "insert")
+    return 'Ok'
+
+
+@app.route('/unlike', methods=["POST"])
+def unlike():
+    if 'access_token' not in session:
+        return redirect('/login')
+    spotify_id = get_spotify_id(session['access_token'])
+    event_id = request.form.get('eventID')
+    query = f'''
+    DELETE FROM liked_events
+    WHERE spotify_id='{spotify_id}'
+        AND event_id='{event_id}'
+    '''
+    execute_query(query, "delete")
+    return 'Ok'
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

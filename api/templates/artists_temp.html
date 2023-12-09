@@ -34,22 +34,14 @@
             <p>No genres found.</p>
         {% endif %}
 
-    {% if events %}
-    <table border="1">
-        <tr>
-            {%for key in events[0].keys()%}
-                <th>{{ key.title() }}</td>
-            {% endfor %}
-        </tr>
-        {% for row in events%}
-        <tr>
-            {% for key, value in row.items() %}
-                <td>{{ value }}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
-        
+    <h3>Search for events in your area</h3>
+    <form action="/events_results" method="post">
+        <label for="cityfield">City:</label>
+        <input type="text" id="cityfield" name="city" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+    <div class="loading-spinner" id="loadingSpinner"></div>
+
 </body>
 </html>

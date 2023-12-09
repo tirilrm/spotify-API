@@ -6,20 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Search Results</title>
 </head>
+<style>
+    .like-button {
+        width: 50px;
+        height: 50px;
+        background: url('static/unliked-heart.png') no-repeat center center;
+        background-size: cover;
+        border: none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .like-button.liked {
+        background: url('static/liked-heart.png') no-repeat center center;
+        background-size: cover;
+    }
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var likeButtons = document.querySelectorAll('.like-button');
+        var likedEvents = {{ liked_events|tojson|safe }};
+        likeButtons.forEach(function (button) {
+            var eventID = button.getAttribute('data-event');
+
+            // Check if the event is in the list of liked events
+            if (likedEvents.includes(eventID)) {
+                button.classList.add('liked');
+            }
+
+            button.addEventListener('click', function () {
+                if (button.classList.contains('liked')) {
+                    // Unlike
+                    button.classList.remove('liked');
+                    sendUnlikeRequest(eventID);
+                } else {
+                    // Like
+                    button.classList.add('liked');
+                    sendLikeRequest(eventID);
+                }
+            });
+        });
+
+        function sendLikeRequest(eventID) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/like', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('eventID=' + encodeURIComponent(eventID));
+        }
+
+        function sendUnlikeRequest(eventID) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/unlike', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('eventID=' + encodeURIComponent(eventID));
+        }
+    });
+</script>
+
 <body>
     <h2>Event Search Results</h2>
     {% if events %}
-        <ul>
-            {% for event in events %}
-                <li>
-                    <strong>{{ event.name }}</strong><br>
-                    ID: {{ event.id if event.id else 'NULL' }}<br>
-                    <a href="{{ event.url }}" target="_blank">Event Details</a>
-                </li>
+    <table id="events-table">
+        <tr>
+            {%for key in events[0].keys()%}
+                <th>{{ key.title() }}</td>
             {% endfor %}
-        </ul>
+        </tr>
+        {% for row in events%}
+        <tr>
+            {% for key, value in row.items() %}
+                <td>{{ value }}</td>
+            {% endfor %}
+            <td><button class='like-button' data-event="{{ row['id'] }}"></button></td>
+        </tr>
+        {% endfor %}
+    </table>
     {% else %}
         <p>No events found.</p>
     {% endif %}
+
+    <br>
+    <form action="/homepage">
+        <input type="submit" value="Return to home">
+    </form>
+
 </body>
 </html>

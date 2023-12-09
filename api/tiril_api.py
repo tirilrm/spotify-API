@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request
-import re
+# from flask import Flask, render_template, request
+# import re
 import requests
 
 
-#@app.route("/get-your-recommended-concerts", methods=["POST"])
+# @app.route("/get-your-recommended-concerts", methods=["POST"])
 def get_concerts():
 
 	url = "https://www.eventbriteapi.com/v3/events/search/"
@@ -16,7 +16,7 @@ def get_concerts():
 	}
 	params = {
 		"location.address": city,
-    }
+	}
 
 	response = requests.get(url, headers=headers, params=params)
 
@@ -24,6 +24,7 @@ def get_concerts():
 		return response.json()  # Returns the JSON response with concert details
 	else:
 		return f"Error: {response.status_code}"
+
 
 # Usage example
 concerts = get_concerts()
