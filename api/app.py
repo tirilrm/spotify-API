@@ -10,8 +10,9 @@ CLIENT_ID = os.getenv('CLIENT_ID')
 
 random_key = os.urandom(12)
 
+# REDIRECT_URI = os.environ.get('REDIRECT_URI', 'http://localhost:5000/callback')
 # REDIRECT_URI = 'http://localhost:5000/callback'
-REDIRECT_URI = 'https://spotify-api-bice.vercel.app:5000/callback'
+REDIRECT_URI = 'https://spotify-api-bice.vercel.app/callback'
 
 AUTH_URL = 'https://accounts.spotify.com/authorize'
 TOKEN_URL = 'https://accounts.spotify.com/api/token'
