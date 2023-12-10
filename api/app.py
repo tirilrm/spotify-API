@@ -1,4 +1,4 @@
-#app.py
+# app.py
 
 import urllib.parse
 import requests
@@ -153,12 +153,12 @@ def unlike():
 if __name__ == '__main__':
     app.run(debug=True)
 
+
 # unit test
 def process_query(query):
-	if "test" in query:
-		return "Test has passed"
+    if "test" in query:
+        return "Test has passed"
 
-@app.route("/query")
-def query():
-	return process_query(request.args.get('q', default="", type=str))
-
+    @app.route("/query")
+    def query():
+        return process_query(request.args.get('q', default="", type=str))
