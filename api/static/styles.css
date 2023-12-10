@@ -1,47 +1,136 @@
+:root {
+    /* Define font size and fallback fonts */
+    --rem: 16px;
+    --font-family: 'Arial', sans-serif;
+    --br-boldness: 600;
+    --br-line-height: 1.4;
+    --fixation-edge-opacity: 80%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: var(--rem);
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-family);
+    height: 100%;
+    font-weight: var(--br-boldness);
+    line-height: var(--br-line-height);
 }
 
 #header {
-    background-color: #333;
+    background-color: #000000;
     color: #ffffff;
-    padding: 10px;
-    text-align: center;
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#navbar ul li {
+    margin: 0 10px; 
+}
+
+#navbar ul li a {
+    color: #ffffff; 
+    text-decoration: none; 
+    padding-bottom: 5px; 
+    border-bottom: 2px solid transparent; 
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    color: #1DB954;
+    border-bottom-color: #1DB954;
+}
+
+#header h1 {
+    font-size: 1.6rem;
+    margin-left: 6rem;
 }
 
 #index-container {
+    background-color: #2c1636;
+    height: 600px;
     text-align: center;
-    margin: 20vh auto;
+    margin: 0 0;
+    padding: 1rem;
 }
 
 #index-container h2 {
-    color: #333;
+    background-color: #2c1636;
+    height: 140px;
+    color: #ffffff;
+    font-size: 3.5rem;
+    padding: 3rem;
+    margin-bottom: 1rem;
+    font-weight: var(--br-boldness);
+    line-height: var(--br-line-height);
+}
+
+#index-container h3 {
+    background-color:#2c1636;
+    height: 80px;
+    color: #ffffffad;
 }
 
 #index-container p {
-    margin: 10px 0;
-    color: #666;
+    margin: 30px ;
+    color: #1DB954;
 }
 
 #index-container button {
+    display: inline-block;
     padding: 10px 20px;
-    font-size: 16px;
-    background-color: #000;
-    color: #fff;
-    border: 1px solid #000;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
 }
 
-#index-container button:hover {
-    background-color: #fff;
-    color: #000;
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #ffffff; /* Spotify green */
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#index-container .arrow {
-    margin-top: 20px;
-    font-size: 24px;
+.like-button {
+    background: url('static/liked-heart.png');
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 
+.button:hover, .button:focus {
+    background-color: #1DB954; 
+    outline: none; /* Removes the default focus outline */
+    /* Optionally add a custom focus style */
+}
