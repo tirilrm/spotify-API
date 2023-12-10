@@ -142,6 +142,24 @@ body {
     outline: none;
 }
 
+.header-form {
+    margin-left: auto; /* Push the form to the right */
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.header-form input {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;

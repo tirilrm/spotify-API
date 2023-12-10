@@ -86,7 +86,7 @@ def homepage():
     top_artists, top_genres = get_top_artists_and_genres(session['access_token'])
 
     # return jsonify(results)
-    return render_template('artists_temp.html',
+    return render_template('homepage.html',
                            top_artists=top_artists,
                            top_genres=top_genres)
 

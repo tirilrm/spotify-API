@@ -9,10 +9,20 @@
 </head>
 <body>
     <div id="header">
-        <h1>My Top Artists & Genres</h1>
-        <form action="/liked_events">
-            <input type="submit" value="Go to your saved events">
-        </form>
+        <h1>My Music Map</h1>
+        <nav id="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><button class="like-button"></button></li>
+                <lil>
+                    <form action="/liked_events" class="header-form">
+                        <input type="submit" value="Go to your saved events">
+                    </form>
+                </lil> 
+            </ul>
+        </nav>    
     </div>
 
     <div id="artists-container">
@@ -22,7 +32,7 @@
                 <!-- Display only the first 5 artists -->
                 {% if loop.index <= 5 %}
                     <div class="artist-card">
-                        <p>{{ artist }}</p>
+                        <h2>{{ artist }}</h2>
                     </div>
                 {% endif %}
             {% endfor %}
