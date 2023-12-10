@@ -97,16 +97,16 @@ body {
 
 #index-container button {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
+    padding: 15px 30px;
+    font-size: 1.2rem;
     background-color: #ffffff;
     color: #000000;
     border: none;
-    border-radius: 4px;
+    text-decoration: none;
+    border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-align: center;
-    text-decoration: none;
 }
 
 .button {
@@ -122,10 +122,9 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.like-button {
-    background: url('static/liked-heart.png');
-    border: none;
-    cursor: pointer;
+#index-container button:hover {
+    background-color:  #1DB954; 
+    color: #000;
     outline: none;
 }
 
@@ -133,4 +132,12 @@ body {
     background-color: #1DB954; 
     outline: none; /* Removes the default focus outline */
     /* Optionally add a custom focus style */
+}
+
+
+.like-button {
+    background: url('static/liked-heart.png');
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
