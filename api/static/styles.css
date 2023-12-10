@@ -141,11 +141,3 @@ body {
     cursor: pointer;
     outline: none;
 }
-
-
-.like-button {
-    background: url('static/liked-heart.png');
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
