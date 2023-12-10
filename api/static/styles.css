@@ -142,6 +142,88 @@ body {
     outline: none;
 }
 
+#benefits-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff; /* Change as needed */
+}
+
+#benefits-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #000000; /* Change as needed */
+}
+
+#benefits-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feature {
+    margin-bottom: 1rem;
+}
+
+.feature-title {
+    font-weight: bold;
+    color: #1DB954; /* Spotify green for titles */
+}
+
+#questions-section {
+    background-color: var(--background-base);
+    padding: var(--container-padding-start) var(--container-padding-end);
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+#questions-section h2 {
+    font-size: 2rem;
+    color: var(--text-base);
+    margin-bottom: 1rem;
+}
+
+#questions-section .faq, #questions-section .contact {
+    color: var(--text-subdued);
+    text-align: left;
+    margin: 1rem auto;
+    max-width: 800px; /* Adjust as needed */
+}
+
+#questions-section .question {
+    font-weight: var(--br-boldness);
+    color: var(--text-bright-accent);
+}
+
+#questions-section .answer {
+    padding-left: 1rem;
+}
+
+#mh-footer {
+    background-color: #000000; /* Footer background color */
+    color: #ffffff; /* Text color */
+    padding: 20px;
+    text-align: center;
+}
+
+.mh-footer-hover a {
+    color: #ffffff; /* Link color */
+    text-decoration: none;
+    margin: 0 10px; /* Space between links */
+}
+
+.mh-footer-hover a:hover {
+    text-decoration: underline; /* Style for hover state */
+}
+
+.mh-brand, .mh-top-links, .mh-social-icons {
+    margin-bottom: 10px;
+}
+
+.answer {
+    display: none; /* Hide answers initially */
+    padding-left: 1rem;
+}
+
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
