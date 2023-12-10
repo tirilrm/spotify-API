@@ -4,47 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Homepage</title>
 </head>
 <body>
-    <h2>Your top artists and genre</h2>
-    <form action="/liked_events">
-        <input type="submit" value="Go to your saved events">
-    </form>
+    <div id="header">
+        <h1>My Top Artists</h1>
+    </div>
 
-    <h3>Top artists</h3>
+    <div id="artists-container">
         {% if top_artists %}
-            <ul>
-                {% for artist in top_artists%}
-                    <li>
-                        <strong>{{artist}}</strong>
-                    </li>
-                {% endfor %}
-            </ul>
+            {% for artist in top_artists %}
+                <!-- Display only the first 5 artists -->
+                {% if loop.index <= 5 %}
+                    <div class="artist-card">
+                        <img src="{{ artist.image_url }}" alt="{{ artist.name }} profile picture">
+                        <p>{{ artist.name }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
         {% else %}
             <p>No artists found.</p>
         {% endif %}
+    </div>
 
-    <h3>Top genres</h3>
+    <!-- View All button -->
+    <a href="{{ url_for('view_all_artists') }}" id="view-all-button">View All</a>
+
+    <div id="genres-container">
+        <h2>Top Genres</h2>
         {% if top_genres %}
-            <ul>
-                {% for genre in top_genres %}
-                    <li>
-                        <strong>{{ genre }}</strong>
-                    </li>
-                {% endfor %}
-            </ul>
+            {% for genre in top_genres %}
+                <!-- Display only the first 5 genres -->
+                {% if loop.index <= 5 %}
+                    <div class="genre-card">
+                        <h3>{{ genre.name }}</h3>
+                        <p>{{ genre.description }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
         {% else %}
             <p>No genres found.</p>
         {% endif %}
+    </div>
 
-    <h3>Search for events in your area</h3>
-    <form action="/events_results" method="post">
-        <label for="cityfield">City:</label>
-        <input type="text" id="cityfield" name="city" required>
-        <br>
-        <input type="submit" value="Search">
-    </form>
+    <!-- View All button -->
+    <a href="{{ url_for('view_all_genre') }}" id="view-all-button">View All</a>
 
+    <div id="search-container">
+        <h2>Search for Events in Your Area</h2>
+        <form action="/events_results" method="post">
+            <label for="cityfield">City:</label>
+            <input type="text" id="cityfield" name="city" required>
+            <br>
+            <input type="submit" value="Search" id="search-button">
+        </form>
+    </div>
 </body>
 </html>
