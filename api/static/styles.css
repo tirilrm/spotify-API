@@ -141,3 +141,40 @@ body {
     cursor: pointer;
     outline: none;
 }
+
+/* Add these styles at the end of styles.css */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.artist-card, .genre-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.artist-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.view-all-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#search-form {
+    text-align: center;
+    margin-top: 20px;
+}
