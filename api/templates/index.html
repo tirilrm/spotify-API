@@ -24,8 +24,91 @@
         <p>Please Login to your Spotify account to get started.</p>
         <a href="/login"><button>Login to My Spotify</button></a>
     </div>
-    <div>
-        <p>Testing color why balbblah</p>
+    <div id="benefits-section">
+        <h2>Why My Music Map?</h2>
+        <ul>
+            <li>
+                <div class="feature">
+                    <p class="feature-title">Personalized Event Discovery</p>
+                    <p>Explore music events based on your unique taste and preferences.</p>
+                </div>
+            </li>
+            <li>
+                <div class="feature">
+                    <p class="feature-title">Interactive Music Map</p>
+                    <p>Navigate an interactive map to discover music events near you.</p>
+                </div>
+            </li>
+            <li>
+                <div class="feature">
+                    <p class="feature-title">Expert Curated Playlists</p>
+                    <p>Get recommendations from experts and create your concert itinerary.</p>
+                </div>
+            </li>
+            <li>
+                <div class="feature">
+                    <p class="feature-title">Social Sharing</p>
+                    <p>Share your music event experiences and favorite picks with friends.</p>
+                </div>
+            </li>
+        </ul>
     </div>
+    <div id="questions-section">
+        <h2>Got Questions?</h2>
+        <div class="faq">
+            <h3>Frequently Asked Questions</h3>
+            <ul>
+                <li>
+                    <p class="question" onclick="toggleAnswer('answer1')">How do I find music events near me?</p>
+                    <p class="answer" id="answer1">Use our interactive map feature to discover events based on your location.</p>
+                </li>
+                    <p class="question" onclick="toggleAnswer('answer1')">How do I find music events near me?</p>
+                    <p class="answer" id="answer1">Use our interactive map feature to discover events based on your location.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="contact">
+            <h3>Don't see your question?</h3>
+            <p>Contact us at <a href="mailto:support@mymusicmap.com">support@mymusicmap.com</a></p>
+        </div>
+    </div>
+    <div>
+        <footer id="mh-footer" class="mh-footer-hover">
+            <nav>
+                <div class="mh-brand">
+                    <!-- Replace with your logo and link -->
+                    <a href="/" class="mh-footer-primary">My Music Map</a>
+                </div>
+                <div class="mh-top-links">
+                    <!-- Add your own links here -->
+                    <a href="/about" class="mh-footer-primary">About Us</a>
+                    <a href="/contact" class="mh-footer-primary">Contact</a>
+                    <!-- Add more links as needed -->
+                </div>
+    
+                <div class="mh-social-icons">
+                    <!-- Social Media Icons -->
+                    <!-- Replace with your own social media links -->
+                    <a href="your-instagram-link" title="Instagram" class="mh-footer-primary">Instagram</a>
+                    <a href="your-twitter-link" title="Twitter" class="mh-footer-primary">Twitter</a>
+                    <a href="your-facebook-link" title="Facebook" class="mh-footer-primary">Facebook</a>
+                </div>
+
+                <span>© 2023 My Music Map</span>
+            </nav>
+        </footer>
+    </div>
+
+<script>
+    function toggleAnswer(id) {
+        var answer = document.getElementById(id);
+        if (answer.style.display === "none") {
+            answer.style.display = "block";
+        } else {
+            answer.style.display = "none";
+        }
+    }
+</script>
+
 </body>
 </html>
