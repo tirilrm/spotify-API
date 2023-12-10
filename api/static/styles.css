@@ -162,11 +162,13 @@ body {
 
 #benefits-section {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     background-color: #ffffff; /* Change as needed */
 }
 
 #benefits-section h2 {
+    text-align: center;
+    padding: 3rem;
     font-size: 2rem;
     margin-bottom: 1rem;
     color: #000000; /* Change as needed */
