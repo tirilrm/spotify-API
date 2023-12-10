@@ -1,3 +1,5 @@
+# app.py
+
 import urllib.parse
 import requests
 from flask import Flask, request, redirect, jsonify, session, render_template
@@ -28,7 +30,8 @@ def get_liked_events():
     SELECT event_id from liked_events WHERE spotify_id = '{spotify_id}'
     '''
     liked_events = execute_query(query)
-    return[e[0] for e in liked_events]
+
+    return [e[0] for e in liked_events]
 
 
 @app.route('/')
@@ -92,10 +95,10 @@ def homepage():
 def liked_events():
     if 'access_token' not in session:
         return redirect('/login')
-    
+
     liked_events = get_liked_events()
     if liked_events:
-        liked_events_info = get_events(event_id_list=liked_events) # get event info by event id
+        liked_events_info = get_events(event_id_list=liked_events)  # get event info by event id
     else:
         liked_events_info = []
     return render_template('liked_events.html', liked_events_info=liked_events_info)
@@ -111,7 +114,7 @@ def event_search():
     # Get events based on genres
     liked_events = get_liked_events()
     events = get_events(genres=top_genres, city=city)
-    
+
     return render_template('events_results.html',
                            events=events,
                            liked_events=liked_events)
@@ -149,3 +152,13 @@ def unlike():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# unit test
+def process_query(query):
+    if "test" in query:
+        return "Test has passed"
+
+    @app.route("/query")
+    def query():
+        return process_query(request.args.get('q', default="", type=str))
