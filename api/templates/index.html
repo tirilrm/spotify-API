@@ -101,11 +101,13 @@
 
 <script>
     function toggleAnswer(id) {
-        var answer = document.getElementById(id);
-        if (answer.style.display === "block") {
-            answer.style.display = "none";
-        } else {
-            answer.style.display = "block";
+    var answer = document.getElementById(id);
+    if (answer.classList.contains('show')) {
+        answer.classList.remove('show');
+        answer.style.maxHeight = null;
+    } else {
+        answer.classList.add('show');
+        answer.style.maxHeight = answer.scrollHeight + "px";
         }
     }
 </script>
