@@ -61,9 +61,9 @@
                 <li>
                     <p class="question" onclick="toggleAnswer('answer1')">How do I find music events near me?</p>
                     <p class="answer" id="answer1">Use our interactive map feature to discover events based on your location.</p>
-                </li>
-                    <p class="question" onclick="toggleAnswer('answer1')">How do I find music events near me?</p>
-                    <p class="answer" id="answer1">Use our interactive map feature to discover events based on your location.</p>
+                <li>
+                    <p class="question" onclick="toggleAnswer('answer2')">Can I share events with friends?</p>
+                    <p class="answer" id="answer2">Absolutely! You can share events directly from our platform.</p>
                 </li>
             </ul>
         </div>
@@ -102,10 +102,10 @@
 <script>
     function toggleAnswer(id) {
         var answer = document.getElementById(id);
-        if (answer.style.display === "none") {
-            answer.style.display = "block";
+        if (answer.style.display === "block") {
+            answer.style.display = "nine";
         } else {
-            answer.style.display = "none";
+            answer.style.display = "block";
         }
     }
 </script>
