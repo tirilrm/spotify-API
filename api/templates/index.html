@@ -6,7 +6,7 @@
     <title>My Music Map</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>    
+<body>
     <div id="header">
         <h1>My Music Map</h1>
         <nav id="navbar">
@@ -15,8 +15,13 @@
                 <li><a href="/support">Support</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><button class="like-button"></button></li>
+                <lil>
+                    <form action="/liked_events" class="header-form">
+                        <input type="submit" value="Go to your saved events">
+                    </form>
+                </lil> 
             </ul>
-        </nav>
+        </nav>    
     </div>
     <div id="index-container">
         <h2>Discover Live Events That<br>Match Your Music Taste.</h2>
