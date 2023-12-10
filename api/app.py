@@ -2,7 +2,6 @@
 
 import urllib.parse
 import requests
-from unittest.mock import patch
 from flask import Flask, request, redirect, jsonify, session, render_template
 from api.utils.spotify_api import get_top_artists_and_genres, get_spotify_id
 from api.utils.ticketmaster_api import get_events
