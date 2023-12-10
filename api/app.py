@@ -1,3 +1,5 @@
+#app.py
+
 import urllib.parse
 import requests
 from flask import Flask, request, redirect, jsonify, session, render_template
@@ -150,3 +152,13 @@ def unlike():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# unit test
+def process_query(query):
+	if "test" in query:
+		return "Test has passed"
+
+@app.route("/query")
+def query():
+	return process_query(request.args.get('q', default="", type=str))
+
