@@ -142,8 +142,6 @@ body {
     outline: none;
 }
 
-/* Add these styles at the end of styles.css */
-
 .card-container {
     display: flex;
     flex-wrap: wrap;

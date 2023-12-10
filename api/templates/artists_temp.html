@@ -18,7 +18,6 @@
                 <!-- Display only the first 5 artists -->
                 {% if loop.index <= 5 %}
                     <div class="artist-card">
-                        <img src="{{ artist.image_url }}" alt="{{ artist.name }} profile picture">
                         <p>{{ artist.name }}</p>
                     </div>
                 {% endif %}
@@ -28,9 +27,6 @@
         {% endif %}
     </div>
 
-    <!-- View All button -->
-    <a href="{{ url_for('view_all_artists') }}" id="view-all-button">View All</a>
-
     <div id="genres-container">
         <h2>Top Genres</h2>
         {% if top_genres %}
@@ -39,7 +35,6 @@
                 {% if loop.index <= 5 %}
                     <div class="genre-card">
                         <h3>{{ genre.name }}</h3>
-                        <p>{{ genre.description }}</p>
                     </div>
                 {% endif %}
             {% endfor %}
@@ -47,9 +42,6 @@
             <p>No genres found.</p>
         {% endif %}
     </div>
-
-    <!-- View All button -->
-    <a href="{{ url_for('view_all_genre') }}" id="view-all-button">View All</a>
 
     <div id="search-container">
         <h2>Search for Events in Your Area</h2>
