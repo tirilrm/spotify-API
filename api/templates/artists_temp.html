@@ -7,8 +7,12 @@
     <title>Homepage</title>
 </head>
 <body>
-    <h2>Your top arstists and genre</h2>
-    <h3>Top arstists</h3>
+    <h2>Your top artists and genre</h2>
+    <form action="/liked_events">
+        <input type="submit" value="Go to your saved events">
+    </form>
+
+    <h3>Top artists</h3>
         {% if top_artists %}
             <ul>
                 {% for artist in top_artists%}
@@ -41,7 +45,6 @@
         <br>
         <input type="submit" value="Search">
     </form>
-    <div class="loading-spinner" id="loadingSpinner"></div>
 
 </body>
 </html>

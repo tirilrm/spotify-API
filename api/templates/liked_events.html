@@ -1,11 +1,12 @@
-<!-- events_results.html -->
+<!-- liked_results.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Search Results</title>
+    <title>Saved events</title>
 </head>
+
 <style>
     .like-button {
         width: 50px;
@@ -45,16 +46,16 @@
 </style>
 
 <body>
-    <h2>Event Search Results</h2>
-    {% if events %}
-    <table id="events-table">
+<h2>Your saved events</h2>
+    {% if liked_events_info %}
+    <table>
         <tr>
             <th>Event Cover</th>
-            {%for key in events[0].keys() if key not in ['image_url', 'url', 'id']%}
+            {%for key in liked_events_info[0].keys() if key not in ['image_url', 'url', 'id']%}
                 <th>{{ key.replace('_', ' ').title() }}</td>
             {% endfor %}
         </tr>
-        {% for event in events%}
+        {% for event in liked_events_info%}
         <tr>
             <td class="image-column"><img src="{{ event.image_url }}" alt="Event cover"></td>
             <td><a href="{{ event.url }}" target="_blank">{{ event.name }}</a></td>
@@ -69,27 +70,22 @@
         {% endfor %}
     </table>
     {% else %}
-        <p>No events found.</p>
+        <p>You haven't saved any event.</p>
     {% endif %}
 
     <br>
     <form action="/homepage">
         <input type="submit" value="Return to home">
     </form>
-
 </body>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var likeButtons = document.querySelectorAll('.like-button');
-        var likedEvents = {{ liked_events|tojson|safe }};
         likeButtons.forEach(function (button) {
             var eventID = button.getAttribute('data-event');
-
-            // Check if the event is in the list of liked events
-            if (likedEvents.includes(eventID)) {
-                button.classList.add('liked');
-            }
+                
+            button.classList.add('liked');
 
             button.addEventListener('click', function () {
                 if (button.classList.contains('liked')) {
@@ -118,6 +114,7 @@
             xhr.send('eventID=' + encodeURIComponent(eventID));
         }
     });
+</script>
 </script>
 
 </html>

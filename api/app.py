@@ -2,7 +2,7 @@ import urllib.parse
 import requests
 from flask import Flask, request, redirect, jsonify, session, render_template
 from api.utils.spotify_api import get_top_artists_and_genres, get_spotify_id
-from api.utils.ticketmaster_api import get_events_based_on_genre
+from api.utils.ticketmaster_api import get_events
 from api.utils.db_query import execute_query
 import os
 
@@ -19,6 +19,16 @@ API_BASE_URL = 'https://api.spotify.com/v1/'
 
 app = Flask(__name__)
 app.secret_key = random_key
+
+
+def get_liked_events():
+
+    spotify_id = get_spotify_id(session['access_token'])
+    query = f'''
+    SELECT event_id from liked_events WHERE spotify_id = '{spotify_id}'
+    '''
+    liked_events = execute_query(query)
+    return[e[0] for e in liked_events]
 
 
 @app.route('/')
@@ -78,6 +88,19 @@ def homepage():
                            top_genres=top_genres)
 
 
+@app.route('/liked_events')
+def liked_events():
+    if 'access_token' not in session:
+        return redirect('/login')
+    
+    liked_events = get_liked_events()
+    if liked_events:
+        liked_events_info = get_events(event_id_list=liked_events) # get event info by event id
+    else:
+        liked_events_info = []
+    return render_template('liked_events.html', liked_events_info=liked_events_info)
+
+
 @app.route('/events_results', methods=["POST"])
 def event_search():
     if 'access_token' not in session:
@@ -86,16 +109,9 @@ def event_search():
     top_genres = get_top_artists_and_genres(session['access_token'])[1]
 
     # Get events based on genres
-    events = get_events_based_on_genre(top_genres, city)
-
-    # Get liked events
-    spotify_id = get_spotify_id(session['access_token'])
-    query = f'''
-    SELECT event_id from liked_events WHERE spotify_id = '{spotify_id}'
-    '''
-    liked_events = execute_query(query)
-    liked_events = [e[0] for e in liked_events]
-
+    liked_events = get_liked_events()
+    events = get_events(genres=top_genres, city=city)
+    
     return render_template('events_results.html',
                            events=events,
                            liked_events=liked_events)
