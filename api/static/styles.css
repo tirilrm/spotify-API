@@ -69,7 +69,7 @@ body {
 }
 
 .header-form {
-    margin-left: auto; /* Push the form to the right */
+    margin-left: auto;
     display: flex;
     align-items: center;
     height: 100%;
@@ -148,7 +148,7 @@ body {
     color: rgb(0, 0, 0);
     font-weight: bold;
     text-align: center;
-    text-decoration: none;
+    text-decoration: none; 
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -252,7 +252,7 @@ body {
 
 #artists-container {
     background-color: #2c1636;
-    height: 10000px;
+    height: 600px;
     text-align: center;
     margin: 0 0;
     padding: 1rem;
@@ -264,37 +264,12 @@ body {
     color: #ffffff;
     font-size: 3.5rem;
     padding: 3rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     font-weight: var(--br-boldness);
     line-height: var(--br-line-height);
 }
 
 #artists-container h3 {
-    background-color:#2c1636;
-    height: 80px;
-    color: #ffffffad;
-}
-
-#genres-container {
-    background-color: #2c1636;
-    height: 10000px;
-    text-align: center;
-    margin: 0 0;
-    padding: 1rem;
-}
-
-#genres-container h2 {
-    background-color: #2c1636;
-    height: 140px;
-    color: #ffffff;
-    font-size: 3.5rem;
-    padding: 3rem;
-    margin-bottom: 0.5rem;
-    font-weight: var(--br-boldness);
-    line-height: var(--br-line-height);
-}
-
-#genres-container h3 {
     background-color:#2c1636;
     height: 80px;
     color: #ffffffad;
@@ -311,7 +286,23 @@ body {
     padding: 10px;
     margin: 10px;
     text-align: center;
-    width: 180px;
+    width: 200px;
+}
+
+.artist-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.view-all-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #search-form {
