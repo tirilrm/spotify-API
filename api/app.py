@@ -55,6 +55,12 @@ def login():
 
     return redirect(auth_url)
 
+# Mock data for testing
+mock_data = {
+    'top_artists': ['Artist 1', 'Artist 2', 'Artist 3', 'Artist 4', 'Artist 5'],
+    'top_genres': ['Genre 1', 'Genre 2', 'Genre 3','Genre 4', 'Genre 5']
+}
+
 
 @app.route('/callback')
 def callback():
@@ -73,8 +79,18 @@ def callback():
         response = requests.post(TOKEN_URL, data=req_body)
         token_info = response.json()
         session['access_token'] = token_info['access_token']
+        # For testing, you can set the access token directly in the session
+        session['access_token'] = 'your_mock_access_token'
+
 
         return redirect('/homepage')
+
+
+# Endpoint for testing with mock data
+@app.route('/test')
+def test():
+    # Return mock data instead of making actual requests
+    return render_template('homepage.html', top_artists=mock_data['top_artists'], top_genres=mock_data['top_genres'])
 
 
 @app.route('/homepage')
