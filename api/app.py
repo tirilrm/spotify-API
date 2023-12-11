@@ -11,7 +11,7 @@ import os
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 CLIENT_ID = os.getenv('CLIENT_ID')
 
-random_key = os.urandom(12)
+random_key = os.getenv('SESSION_KEY')
 
 REDIRECT_URI = os.environ.get('REDIRECT_URI', 'http://localhost:5000/callback')
 
