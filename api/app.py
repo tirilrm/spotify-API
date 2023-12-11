@@ -121,6 +121,17 @@ def test():
     # Return mock data instead of making actual requests
     return render_template('events_results.html', events=mock_data['events'], liked_events=mock_data['liked_events'])
 
+# Add this route for testing the liked_events page
+@app.route('/test_liked_events')
+def test_liked_events():
+    # Mock data for testing
+    mock_liked_events = ['event_id_1', 'event_id_2']  # Replace with actual event IDs
+
+    # Render the liked_events page with mock data
+    liked_events_info = get_events(event_id_list=mock_liked_events)  # Replace with actual function call
+    return render_template('liked_events.html', liked_events_info=liked_events_info)
+
+
 
 @app.route('/homepage')
 def homepage():
