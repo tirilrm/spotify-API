@@ -1,0 +1,5 @@
+We created a webapp which provides users with live events that match their music taste. The idea is simple: users can login with their Spotify account and are then able to see their top artists and top music genre. They can they look up a particular city, and it will show them a list of music events and concerts in that area, tailored to their music taste!
+
+We have employed two APIs in this build. Firstly, the Spotify API provides data on the user’s top artists and associated top music genres. Secondly, the Ticketmaster API provides data on relevant events in a given area. Using the data retrieved from Spotify to filter and select relevant events listed on Ticketmaster, we are able to curate an interesting mix of new events for the user to discover.
+
+Please note that since our app is still on development mode, the Spotify API only allows us to retrieve the user’s information only if they are added to my Spotify developer dashboard. We are awaiting to be granted the extension request to be able to retrieve the user’s Spotify information when they login through our webapp.
