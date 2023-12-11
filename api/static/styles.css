@@ -139,14 +139,15 @@ body {
 #benefits-section {
     text-align: center;
     padding: 1rem;
-    background-color: #ffffff; /* Change as needed */
+    background-color: #ffffff;  
+    padding-bottom: 4rem;
 }
 
 #benefits-section h2 {
     text-align: center;
     padding: 3rem;
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     color: #000000; /* Change as needed */
 }
 
@@ -174,28 +175,42 @@ body {
 #questions-section h2 {
     font-size: 2rem;
     color: var(--text-base);
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 #questions-section .faq, #questions-section .contact {
     color: var(--text-subdued);
     text-align: left;
-    margin: 1rem auto;
+    margin: 2rem auto;
     max-width: 800px; /* Adjust as needed */
+    padding-bottom: 4rem;
 }
 
 #questions-section .question {
     font-weight: var(--br-boldness);
     color: var(--text-bright-accent);
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding-top: 10px;
+    border-top: 1px solid #dfdddd; 
 }
 
 #questions-section .answer {
+    display: none;
+    color:#4f0074;
     padding-left: 1rem;
+    padding-top: 5px;
+    margin-top: 5px;
 }
 
 .answer {
     display: none; /* Hide answers initially */
     padding-left: 1rem;
+}
+
+.faq-item:not(:first-child) .question {
+    margin-top: 15px;
 }
 
 #mh-footer {
