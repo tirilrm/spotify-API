@@ -271,6 +271,31 @@ body {
     color: #ffffffad;
 }
 
+#genres-container {
+    background-color: #2c1636;
+    height: 10000px;
+    text-align: center;
+    margin: 0 0;
+    padding: 1rem;
+}
+
+#genres-container h2 {
+    background-color: #2c1636;
+    height: 140px;
+    color: #ffffff;
+    font-size: 3.5rem;
+    padding: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: var(--br-boldness);
+    line-height: var(--br-line-height);
+}
+
+#genres-container h3 {
+    background-color:#2c1636;
+    height: 80px;
+    color: #ffffffad;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
