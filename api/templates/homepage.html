@@ -15,22 +15,22 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/support">Support</a></li>
                 <li><a href="/about">About Us</a></li>
-                <li><button class="like-button"></button></li>
-                <lil>
+                <li>
                     <form action="/liked_events" class="header-form">
                         <input type="submit" value="My saved events" class="button like-button">
                     </form>
-                </lil> 
+                </li> 
             </ul>
         </nav>    
     </div>
 
     <div id="artists-container">
         <h2>My Top Artists</h2>
+        <h3>The artists you've been loving lately...</h3>
             {% if top_artists %}
                 {% for artist in top_artists %}
-                <!-- Display only the first 5 artists -->
-                {% if loop.index <= 5 %}
+                <!-- Display only the first 10 artists -->
+                {% if loop.index <= 10 %}
                     <div class="artist-card">
                         <h2>{{ artist }}</h2>
                     </div>
@@ -43,10 +43,11 @@
 
     <div id="genres-container">
         <h2>My Top Genres</h2>
+        <h3>The genres of usic of your favorite artists</h3>
         {% if top_genres %}
             {% for genre in top_genres %}
-                <!-- Display only the first 5 genres -->
-                {% if loop.index <= 5 %}
+                <!-- Display only the first 10 genres -->
+                {% if loop.index <= 10 %}
                     <div class="genre-card">
                         <h3>{{ genre }}</h3>
                     </div>
@@ -58,7 +59,9 @@
     </div>
 
     <div id="search-container">
-        <h2>Search for Events in Your Area</h2>
+        <h2>Discover Events in Your Area</h2>
+        <h3>Why not discover events around you which match your unique taste?</h3>
+        <p>choose your location</p>
         <form action="/events_results" method="post">
             <label for="cityfield">City:</label>
             <input type="text" id="cityfield" name="city" required>
