@@ -4,48 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_events.css') }}">
     <title>Event Search Results</title>
 </head>
-<style>
-    .like-button {
-        width: 50px;
-        height: 50px;
-        background: url('static/unliked-heart.png') no-repeat center center;
-        background-size: cover;
-        border: none;
-        cursor: pointer;
-        outline: none;
-    }
-
-    .like-button.liked {
-        background: url('static/liked-heart.png') no-repeat center center;
-        background-size: cover;
-    }
-
-    img {
-            max-width: 100%;
-            height: auto;
-    }
-
-    table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-    }
-
-    .image-column {
-            width: 7%; /* Adjust as needed based on your layout */
-            max-width: 80px; /* Set a maximum width for the first column */
-        }
-
-</style>
 
 <body>
-    <h2>Event Search Results</h2>
+    <div id="header">
+        <h1>My Music Map</h1>
+        <nav id="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/liked_events">
+                    <img src="static/liked-heart.png" alt="Heart" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                    Saved Events</a>
+                </li> 
+            </ul>
+        </nav>    
+    </div>
+
+    <div id ="table-heading">
+        <h2>Our Handpicked Music Events for You in {{ city }}!</h2>
+        <p>click on any event for more information.</p>
+    </div>
+
     {% if events %}
     <table id="events-table">
         <tr>
@@ -74,9 +58,8 @@
 
     <br>
     <form action="/homepage">
-        <input type="submit" value="Return to home">
+        <input type="submit" value="Return to homepage", class="homepage-button">
     </form>
-
 </body>
 
 <script>

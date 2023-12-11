@@ -1,0 +1,154 @@
+/* homepage css styling */
+
+/* Top artirsts */
+#artists-container {
+    background-color: #2c1636;
+    text-align: center;
+    padding: 1rem;
+}
+
+#artists-container h2 {
+    background-color: #2c1636;
+    height: 140px;
+    color: #ffffff;
+    font-size: 3.5rem;
+    padding: 3rem;
+    margin-bottom: 1rem;
+    font-weight: var(--br-boldness);
+    line-height: var(--br-line-height);
+}
+
+#artists-container h3 {
+    background-color:#2c1636;
+    height: 80px;
+    color: #ffffffad;
+}
+
+/* Top genres */
+#genres-container {
+    background-color: #2c1636;
+    text-align: center;
+    padding: 1rem;
+}
+
+#genres-container h2 {
+    background-color: #2c1636;
+    height: 140px;
+    color: #ffffff;
+    font-size: 3.5rem;
+    padding: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: var(--br-boldness);
+    line-height: var(--br-line-height);
+}
+
+#genres-container h3 {
+    background-color:#2c1636;
+    height: 80px;
+    color: #ffffffad;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.artist-card, .genre-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+/* implement later
+.artist-card img {
+    max-width: 100%;
+    height: auto;
+}
+*/
+
+/* implement this in later webapp update 
+.view-all-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+} */
+
+/* Search container */
+#search-container {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#search-container {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 1rem;
+}
+
+#search-container h2 {
+    background-color: #ffffff;
+    height: 140px;
+    color: #000000;
+    font-size: 3.5rem;
+    padding: 3rem;
+    margin-bottom: 0.3rem;
+    font-weight: var(--br-boldness);
+    line-height: var(--br-line-height);
+}
+
+#search-container h3 {
+    background-color: #ffffff;
+    height: 80px;
+    color: #000000;
+    margin-bottom: 0.1rem;
+}
+
+#search-container p {
+    margin: 1rem;
+    color: #1DB954;
+}
+
+#search-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#search-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#search-button:hover {
+    background-color: #1DB954;
+    color: #000;
+    outline: none;
+    border: none;
+}
