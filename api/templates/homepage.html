@@ -45,7 +45,7 @@
 
     <div id="genres-container">
         <h2>My Top Genres</h2>
-        <h3>The genres of usic of your favorite artists</h3>
+        <h3>The genres of music your favorite artists are known for...</h3>
         <div class="card-container"
             {% if top_genres %}
                 {% for genre in top_genres %}
@@ -66,7 +66,7 @@
         <h2>Discover Events in Your Area</h2>
         <h3>Why not discover events around you which match your unique taste?</h3>
         <p>choose your location</p>
-        <form action="/events_results" method="post">
+        <form action="/events_results" method="post", id="search-form">
             <label for="cityfield">City:</label>
             <input type="text" id="cityfield" name="city" required>
             <br>
