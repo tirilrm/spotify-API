@@ -56,11 +56,6 @@ def login():
     return redirect(auth_url)
 
 # Mock data for testing
-''' mock_data = {
-    'top_artists': ['Artist 1', 'Artist 2', 'Artist 3', 'Artist 4', 'Artist 5'],
-    'top_genres': ['Genre 1', 'Genre 2', 'Genre 3','Genre 4', 'Genre 5']
-}
-'''
 mock_data = {
     'events': [
         {
@@ -90,6 +85,7 @@ mock_data = {
     ],
     'liked_events': ['event1_id']  # IDs of liked events
 }
+
 
 @app.route('/callback')
 def callback():
@@ -124,6 +120,7 @@ def test():
     '''
     # Return mock data instead of making actual requests
     return render_template('events_results.html', events=mock_data['events'], liked_events=mock_data['liked_events'])
+
 
 @app.route('/homepage')
 def homepage():
