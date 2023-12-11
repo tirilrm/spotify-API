@@ -16,10 +16,9 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/support">Support</a></li>
                 <li><a href="/about">About Us</a></li>
-                <li>
-                    <form action="/liked_events" class="header-form">
-                        <input type="submit" value="My saved events" class="button like-button">
-                    </form>
+                <li><a href="/liked_events">
+                    <img src="static/liked-heart.png" alt="Heart" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
+                    Saved Events</a>
                 </li> 
             </ul>
         </nav>    
@@ -70,7 +69,7 @@
         <h3>Why not discover events around you which match your unique taste?</h3>
         <p>Choose your location</p>
         <form action="/events_results" method="post", id="search-form">
-            <label for="cityfield">input a city:</label>
+            <label for="cityfield">city name:</label>
             <input type="text" id="cityfield" name="city" required>
             <br>
             <input type="submit" value="Search" id="search-button">
