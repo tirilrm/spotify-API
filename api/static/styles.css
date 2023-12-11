@@ -216,20 +216,45 @@ body {
 #mh-footer {
     background-color: #000000; /* Footer background color */
     color: #ffffff; /* Text color */
-    padding: 20px;
+    padding: 60px 20px;
     text-align: center;
+    font-family: var(--font-family);
 }
 
 .mh-footer-hover a {
     color: #ffffff; /* Link color */
     text-decoration: none;
-    margin: 0 10px; /* Space between links */
+    margin: 0 15px; 
+    font-size: 1rem;
 }
 
 .mh-footer-hover a:hover {
-    text-decoration: underline; /* Style for hover state */
+    text-decoration: underline; 
+    color: #1DB954;
 }
 
 .mh-brand, .mh-top-links, .mh-social-icons {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    display: inline-block; /* Align sections in a row */
+    width: 30%; /* Adjust as needed */
+    text-align: left;
+}
+.mh-brand {
+    width: 40%; /* Adjust width for brand section */
+}
+
+.mh-footer-hover nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mh-social-icons {
+    text-align: center;
+}
+
+.mh-footer-hover span {
+    display: block; /* Make copyright a separate block */
+    margin-top: 30px; /* Space above copyright */
+    font-size: 0.9rem; /* Adjust as needed */
 }
