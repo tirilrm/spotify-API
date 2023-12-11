@@ -61,12 +61,6 @@ body {
     border-bottom-color: #1DB954;
 }
 
-#header-form:hover {
-    color: #1DB954; 
-    outline: none; 
-    border-bottom-color: #1DB954;
-}
-
 #header h1 {
     font-size: 1.6rem;
     margin-left: 6rem;
