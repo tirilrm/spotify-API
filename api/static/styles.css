@@ -53,40 +53,11 @@ body {
     padding-bottom: 2px; 
     border-bottom: 2px solid transparent; 
     transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    margin-right: 2rem;
 }
 
 #navbar ul li a:hover {
     color: #1DB954;
-    border-bottom-color: #1DB954;
-}
-
-
-.like-button {
-    background: url('static/liked-heart.png');
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.header-form {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-.header-form input {
-    padding-bottom: 2px; 
-    border-bottom: 2px solid transparent; 
-    color: #fffefe;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.header-form:hover {
-    color: #1DB954; 
-    outline: none; 
     border-bottom-color: #1DB954;
 }
 
