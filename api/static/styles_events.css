@@ -24,7 +24,7 @@
 .like-button {
     width: 50px;
     height: 50px;
-    background: url('static/unliked-heart.png') no-repeat center center;
+    background: url('unliked-heart.png') no-repeat center center;
     background-size: cover;
     border: none;
     cursor: pointer;
@@ -32,7 +32,7 @@
 }
 
 .like-button.liked {
-    background: url('static/liked-heart.png') no-repeat center center;
+    background: url('liked-heart.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -59,6 +59,7 @@ th, td {
 
 /* homepage button */
 .homepage-button {
+    margin-left: 5px;
     display: inline-block;
     padding: 15px 20px;
     font-size: 1.2rem;

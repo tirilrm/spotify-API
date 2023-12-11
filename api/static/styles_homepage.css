@@ -52,19 +52,27 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
 .artist-card, .genre-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #ddd;
     padding: 10px;
     margin: 10px;
     text-align: center;
-    width: 120px;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    width: 15%;
+    overflow-wrap: break-word;
+}
+
+.artist-card, .genre-card p {
+    font-size: 20px;
+    color: #ffffff;
 }
 
 /* implement later

@@ -13,8 +13,8 @@
         <h1>My Music Map</h1>
         <nav id="navbar">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/support">Support</a></li>
+                <li><a href="/">Logout</a></li>
+                <li><a href="#questions-section">Support</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/liked_events">
                     <img src="static/liked-heart.png" alt="Heart" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 5px;">
@@ -34,7 +34,7 @@
                     <!-- Display only the first 5 artists -->
                         {% if loop.index <= 5 %}
                             <div class="artist-card">
-                            <h2>{{ artist }}</h2>
+                            <p>{{ artist }}</p>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -53,7 +53,7 @@
                         <!-- Display only the first 5 genres -->
                         {% if loop.index <= 5 %}
                             <div class="genre-card">
-                                <h2>{{ genre }}</h2>
+                                <p>{{ genre }}</p>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -69,11 +69,48 @@
         <h3>Why not discover events around you which match your unique taste?</h3>
         <p>Choose your location</p>
         <form action="/events_results" method="post", id="search-form">
-            <label for="cityfield">city name:</label>
+            <label for="cityfield">City name:</label>
             <input type="text" id="cityfield" name="city" required>
             <br>
             <input type="submit" value="Search" id="search-button">
         </form>
     </div>
+
+    <div id="questions-section">
+        <h2>Got Questions?</h2>
+        <div class="faq">
+            <h3>Frequently Asked Questions</h3>
+            <ul>
+                <li>
+                    <p class="question" onclick="toggleAnswer('answer1')">How do I find music events near me?</p>
+                    <p class="answer" id="answer1">Use our interactive map feature to discover events based on your location.</p>
+                </li>
+                <li>
+                    <p class="question" onclick="toggleAnswer('answer2')">Can I share events with friends?</p>
+                    <p class="answer" id="answer2">Absolutely! You can share events directly from our platform.</p>
+                </li>
+                <li class="faq-item">
+                    <p class="question" onclick="toggleAnswer('answer3')">Is there a mobile app available?</p>
+                    <p class="answer" id="answer3">Yes, our mobile app is available for both iOS and Android devices.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="contact">
+            <h3>Don't see your question?</h3>
+            <p>Contact us at <a href="mailto:support@mymusicmap.com">support@mymusicmap.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById(id);
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
+    
+    </script>
 </body>
 </html>

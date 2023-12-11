@@ -24,7 +24,7 @@
 .like-button {
     width: 50px;
     height: 50px;
-    background: url('static/unliked-heart.png') no-repeat center center;
+    background: url_for('static', filename='unliked-heart.png') no-repeat center center;
     background-size: cover;
     border: none;
     cursor: pointer;
@@ -32,7 +32,7 @@
 }
 
 .like-button.liked {
-    background: url('static/liked-heart.png') no-repeat center center;
+    background: url_for('static', filename='liked-heart.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -56,3 +56,7 @@ th, td {
         width: 7%; /* Adjust as needed based on your layout */
         max-width: 80px; /* Set a maximum width for the first column */
     }
+
+.saved-events p {
+    margin-left: 5px;
+}

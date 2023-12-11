@@ -117,7 +117,8 @@ def event_search():
 
     return render_template('events_results.html',
                            events=events,
-                           liked_events=liked_events)
+                           liked_events=liked_events,
+                           city=city)
 
 
 @app.route('/like', methods=["POST"])
@@ -149,6 +150,9 @@ def unlike():
     execute_query(query, "delete")
     return 'Ok'
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
