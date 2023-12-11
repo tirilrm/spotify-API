@@ -56,11 +56,40 @@ def login():
     return redirect(auth_url)
 
 # Mock data for testing
-mock_data = {
+''' mock_data = {
     'top_artists': ['Artist 1', 'Artist 2', 'Artist 3', 'Artist 4', 'Artist 5'],
     'top_genres': ['Genre 1', 'Genre 2', 'Genre 3','Genre 4', 'Genre 5']
 }
-
+'''
+mock_data = {
+    'events': [
+        {
+            'name': 'Event 1',
+            'event_date': '2023-12-31',
+            'event_time': '20:00:00',
+            'city': 'City 1',
+            'country': 'Country 1',
+            'venue_name': 'Venue 1',
+            'price_range': '$$$',
+            'image_url': 'https://example.com/event1.jpg',
+            'url': 'https://example.com/event1',
+            'id': 'event1_id'
+        },
+        {
+            'name': 'Event 2',
+            'event_date': '2023-12-31',
+            'event_time': '20:00:00',
+            'city': 'City 1',
+            'country': 'Country 1',
+            'venue_name': 'Venue 1',
+            'price_range': '$$$',
+            'image_url': 'https://example.com/event2.jpg',
+            'url': 'https://example.com/event2',
+            'id': 'event2_id'
+        },
+    ],
+    'liked_events': ['event1_id']  # IDs of liked events
+}
 
 @app.route('/callback')
 def callback():
@@ -90,8 +119,11 @@ def callback():
 @app.route('/test')
 def test():
     # Return mock data instead of making actual requests
+    '''
     return render_template('homepage.html', top_artists=mock_data['top_artists'], top_genres=mock_data['top_genres'])
-
+    '''
+    # Return mock data instead of making actual requests
+    return render_template('events_results.html', events=mock_data['events'], liked_events=mock_data['liked_events'])
 
 @app.route('/homepage')
 def homepage():

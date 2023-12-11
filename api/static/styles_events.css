@@ -1,0 +1,55 @@
+/* event result css styling */
+
+#table-heading {
+    background-color: #2c1636;
+    height: 120px;
+    text-align: center;
+    margin: 0 0;
+    padding: 1rem;
+}
+
+#table-heading h2 {
+    background-color:#2c1636;
+    height: 40px;
+    color: #ffffff;
+}
+
+#table-heading p {
+    margin: 20px ;
+    color: #ffffffad;
+}
+
+.like-button {
+    width: 50px;
+    height: 50px;
+    background: url('static/unliked-heart.png') no-repeat center center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.like-button.liked {
+    background: url('static/liked-heart.png') no-repeat center center;
+    background-size: cover;
+}
+
+img {
+        max-width: 100%;
+        height: auto;
+}
+
+table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+.image-column {
+        width: 7%; /* Adjust as needed based on your layout */
+        max-width: 80px; /* Set a maximum width for the first column */
+    }
