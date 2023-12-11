@@ -245,6 +245,31 @@ body {
 
 /* Homepage */
 
+#artists-container {
+    background-color: #2c1636;
+    height: 600px;
+    text-align: center;
+    margin: 0 0;
+    padding: 1rem;
+}
+
+#artists-container h2 {
+    background-color: #2c1636;
+    height: 140px;
+    color: #ffffff;
+    font-size: 3.5rem;
+    padding: 3rem;
+    margin-bottom: 1rem;
+    font-weight: var(--br-boldness);
+    line-height: var(--br-line-height);
+}
+
+#artists-container h3 {
+    background-color:#2c1636;
+    height: 80px;
+    color: #ffffffad;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
